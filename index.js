@@ -9,5 +9,4 @@ const questions = require("./lib/questions");
 
 prompt(questions).then((answers) => {
   fs.writeFileSync("logo.svg", generateSVG(answers));
-  //   console.log(generateSVG(answers));
 });
