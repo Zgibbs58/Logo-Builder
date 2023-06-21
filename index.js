@@ -8,5 +8,5 @@ const prompt = inquirer.createPromptModule();
 const questions = require("./lib/questions");
 
 prompt(questions).then((answers) => {
-  fs.writeFileSync("logo.svg", generateSVG(answers));
+  fs.writeFileSync("./examples/logo.svg", generateSVG(answers));
 });
