@@ -17,6 +17,7 @@ prompt(questions)
     const generatedSVG = shape.renderLogo(
       shape.code,
       shape.textY,
+      //   Adding # in front of the 6 characters if the user chooses hex
       answers.colorChoice.includes("hex") ? "#" + answers.shapeColor : answers.shapeColor,
       answers.text,
       answers.colorChoice.includes("hex") ? "#" + answers.textColor : answers.textColor
