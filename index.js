@@ -16,6 +16,7 @@ prompt(questions)
     // created a variable for the renderLogo method from shapes.js for readability
     const generatedSVG = shape.renderLogo(
       shape.code,
+      shape.textY,
       answers.colorChoice.includes("hex") ? "#" + answers.shapeColor : answers.shapeColor,
       answers.text,
       answers.colorChoice.includes("hex") ? "#" + answers.textColor : answers.textColor
