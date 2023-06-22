@@ -3,7 +3,7 @@
 const fs = require("fs/promises");
 const inquirer = require("inquirer");
 // const generateSVG = require("./lib/generateSVG");
-const shapes = require("./lib/shapes");
+const { shape, circle, triangle, square } = require("./lib/shapes");
 
 const prompt = inquirer.createPromptModule();
 
@@ -11,17 +11,18 @@ const questions = require("./lib/questions");
 
 prompt(questions)
   .then((answers) => {
-    // defining shape as the shape object from shapes.js
-    const shape = shapes[answers.shape];
+    let shape;
+    if (answers.shape === "circle") {
+      // This is just answers.shapeColor
+      // added a ternary operator to check if the user inputted a hex color code to add the # to the beginning of the string
+      shape = new circle(answers.colorChoice.includes("hex") ? "#" + answers.shapeColor : answers.shapeColor);
+    } else if (answers.shape === "triangle") {
+      shape = new triangle(answers.colorChoice.includes("hex") ? "#" + answers.shapeColor : answers.shapeColor);
+    } else if (answers.shape === "square") {
+      shape = new square(answers.colorChoice.includes("hex") ? "#" + answers.shapeColor : answers.shapeColor);
+    }
     // created a variable for the renderLogo method from shapes.js for readability
-    const generatedSVG = shape.renderLogo(
-      shape.code,
-      shape.textY,
-      //   Adding # in front of the 6 characters if the user chooses hex
-      answers.colorChoice.includes("hex") ? "#" + answers.shapeColor : answers.shapeColor,
-      answers.text,
-      answers.colorChoice.includes("hex") ? "#" + answers.textColor : answers.textColor
-    );
+    const generatedSVG = shape.renderLogo(answers.text, answers.colorChoice.includes("hex") ? "#" + answers.textColor : answers.textColor);
     return fs.writeFile("./examples/logo.svg", generatedSVG);
   })
   .then(() => console.log("Generated logo.svg"))
