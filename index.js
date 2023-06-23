@@ -1,6 +1,6 @@
 // used fs/promises instead of fs because it is a promise based version of the fs module
 // and can return promises that can be chained using .then() and .catch() like in exercise 24-Stu_Promises-Catch
-const fs = require("fs/promises");
+const { writeFile } = require("fs/promises");
 const inquirer = require("inquirer");
 const generateLogo = require("./lib/generateLogo");
 const { shape, circle, triangle, square } = require("./lib/shapes");
@@ -23,7 +23,7 @@ prompt(questions)
     }
     // created a variable for the renderLogo method from shapes.js for readability
     const generatedSVG = generateLogo(answers.text, answers.colorChoice.includes("hex") ? "#" + answers.textColor : answers.textColor, shapeChoice);
-    return fs.writeFile("./examples/logo.svg", generatedSVG);
+    return writeFile("./examples/logo.svg", generatedSVG);
   })
   .then(() => console.log("Generated logo.svg"))
   .catch((err) => {
