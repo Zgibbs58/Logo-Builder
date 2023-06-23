@@ -41,6 +41,8 @@ After providing the required input, the application will generate an SVG file na
 
 To view the generated logo, open the logo.svg file in a web browser. The logo will be rendered as a 300x200 pixel image.
 
+[Walkthrough Video Link](https://drive.google.com/file/d/10K1SNVwZVfSqIK3AGAhmmYSm83IcsuUW/view)
+
 ## Technologies
 The application is built using the following technologies:
 
