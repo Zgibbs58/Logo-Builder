@@ -27,7 +27,9 @@ Navigate to the project directory: cd Logo-Builder
 
 Install the dependencies: npm install
 ## Usage
-Run the application using the following command: node index.js
+Run the application using the following command: 
+
+```node index.js```
 
 The application will prompt you for the following information:
 
